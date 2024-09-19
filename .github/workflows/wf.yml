@@ -21,6 +21,7 @@ jobs:
       - name: tests
         run: echo "tests"
   envuat:
+    needs: test
     runs-on: ubuntu-latest
     environment: uat
     steps:
@@ -29,6 +30,7 @@ jobs:
       - name: echouat
         run: echo "uat env"
   envdev:
+    needs: test
     runs-on: ubuntu-latest
     environment: dev
     steps:
