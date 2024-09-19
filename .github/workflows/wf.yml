@@ -1,7 +1,15 @@
 name: Some workflow
 
 on:
-  push:
+  workflow_dispatch:
+    inputs:
+      some-input:
+        description: 'Some input'
+        required: true
+        type: choice
+        options:
+          - 'option1'
+          - 'option2'
 
 jobs:
   test:
