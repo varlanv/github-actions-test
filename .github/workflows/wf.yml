@@ -1,15 +1,16 @@
 name: Some workflow
 
 on:
-  workflow_dispatch:
-    inputs:
-      some-input:
-        description: 'Some input'
-        required: true
-        type: choice
-        options:
-          - 'option1'
-          - 'option2'
+#  workflow_dispatch:
+#    inputs:
+#      some-input:
+#        description: 'Some input'
+#        required: true
+#        type: choice
+#        options:
+#          - 'option1'
+#          - 'option2'
+  push:
 
 jobs:
   test:
@@ -19,3 +20,19 @@ jobs:
         uses: actions/checkout@v2
       - name: tests
         run: echo "tests"
+  envuat:
+    runs-on: ubuntu-latest
+    environment: uat
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: echouat
+        run: echo "uat env"
+  envdev:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: echodev
+        run: echo "devenv"
