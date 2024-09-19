@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Reuse
+        uses: varlanv/github-actions-producer-test/.github/reusable-actions/some-action@main
       - name: tests
         run: echo "tests"
   test:
@@ -48,7 +50,7 @@ jobs:
         uses: actions/checkout@v2
       - name: tests
         run: echo "tests"
-  envuat:
+  deploy-uat:
     name: Deploy UAT
     needs: image
     runs-on: ubuntu-latest
@@ -58,7 +60,7 @@ jobs:
         uses: actions/checkout@v2
       - name: echouat
         run: echo "uat env"
-  envdev:
+  deploy-dev:
     name: Deploy DEV
     needs: image
     runs-on: ubuntu-latest
