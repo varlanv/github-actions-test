@@ -50,7 +50,7 @@ jobs:
         run: echo "tests"
   envuat:
     name: Deploy UAT
-    needs: sonar
+    needs: image
     runs-on: ubuntu-latest
     environment: uat
     steps:
@@ -60,7 +60,7 @@ jobs:
         run: echo "uat env"
   envdev:
     name: Deploy DEV
-    needs: sonar
+    needs: image
     runs-on: ubuntu-latest
     environment: dev
     steps:
