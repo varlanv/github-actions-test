@@ -16,57 +16,59 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Reuse
-        uses: varlanv/github-actions-producer-test/.github/reusable-actions/some-action@main
-      - name: tests
-        run: echo "tests"
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: tests
-        run: echo "tests"
-  sonar:
-    name: Sonarqube
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: tests
-        run: echo "tests"
-  image:
-    name: Build Image
-    runs-on: ubuntu-latest
-    needs: sonar
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: tests
-        run: echo "tests"
-  deploy-uat:
-    name: Deploy UAT
-    needs: image
-    runs-on: ubuntu-latest
-    environment: uat
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: echouat
-        run: echo "uat env"
-  deploy-dev:
-    name: Deploy DEV
-    needs: image
-    runs-on: ubuntu-latest
-    environment: dev
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: echodev
-        run: echo "devenv"
+    uses: varlanv/github-actions-producer-test/.github/workflows/wf@main
+
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#      - name: Reuse
+#        uses: varlanv/github-actions-producer-test/.github/reusable-actions/some-action@main
+#      - name: tests
+#        run: echo "tests"
+#  test:
+#    name: Test
+#    runs-on: ubuntu-latest
+#    needs: build
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#      - name: tests
+#        run: echo "tests"
+#  sonar:
+#    name: Sonarqube
+#    runs-on: ubuntu-latest
+#    needs: test
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#      - name: tests
+#        run: echo "tests"
+#  image:
+#    name: Build Image
+#    runs-on: ubuntu-latest
+#    needs: sonar
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#      - name: tests
+#        run: echo "tests"
+#  deploy-uat:
+#    name: Deploy UAT
+#    needs: image
+#    runs-on: ubuntu-latest
+#    environment: uat
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#      - name: echouat
+#        run: echo "uat env"
+#  deploy-dev:
+#    name: Deploy DEV
+#    needs: image
+#    runs-on: ubuntu-latest
+#    environment: dev
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#      - name: echodev
+#        run: echo "devenv"
