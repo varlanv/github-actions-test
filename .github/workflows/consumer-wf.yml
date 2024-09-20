@@ -2,20 +2,24 @@ name: Some workflow
 
 on:
   pull_request:
-#  workflow_dispatch:
-#    inputs:
-#      some-input:
-#        description: 'Some input'
-#        required: true
-#        type: choice
-#        options:
-#          - 'option1'
-#          - 'option2'
+    branches:
+      - main
 
 jobs:
   build:
-    name: Build
-    uses: varlanv/github-actions-producer-test/.github/workflows/wf.yml@main
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Run"
+        run: echo "Run"
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment: dev
+    steps:
+      - name: "Deploy"
+        run: echo "Deploy"
+#    name: Build
+#    uses: varlanv/github-actions-producer-test/.github/workflows/wf.yml@main
 
 #    steps:
 #      - name: Checkout
