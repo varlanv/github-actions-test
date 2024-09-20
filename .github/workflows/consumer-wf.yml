@@ -2,6 +2,8 @@ name: Some workflow
 
 on:
   push:
+    branches:
+      - feature/*
 #  workflow_dispatch:
 #    inputs:
 #      some-input:
